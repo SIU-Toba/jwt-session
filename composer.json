@@ -1,5 +1,5 @@
 {
-    "name": "siu-toba/jwt-toba-session",
+    "name": "siu-toba/jwt-session",
     "description": "Una pequeña librería que genera Web Tokens JSON (JWT)",
     "homepage": "http://www.siu.edu.ar",
     "license": "SIU",
