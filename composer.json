@@ -1,0 +1,24 @@
+{
+    "name": "siu-toba/jwt-toba-session",
+    "description": "Una pequeña librería que genera Web Tokens JSON (JWT)",
+    "homepage": "http://www.siu.edu.ar",
+    "license": "SIU",
+    "authors": [
+        {
+            "name": "Sistema de Información Universitaria - SIU",
+            "email": "info@siu.edu.ar"
+        }
+    ],
+
+    "require": {
+        "php": ">=5.6.0",
+        "siu-toba/rest": "dev-jwt",
+        "siu-toba/jwt-util": "1.0.1"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "SIU\\JWT\\": "src/SIU/JWT"
+        }
+    }
+}
