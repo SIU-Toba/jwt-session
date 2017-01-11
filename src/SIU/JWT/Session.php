@@ -14,15 +14,27 @@ class Session
     protected static $instancia;
 
     /**
+     * Retorna una instancia de Session
+     *
      * @return Session
      */
     public static function app()
     {
         if (!isset(self::$instancia)){
-            throw new Exception ('Primero debe generar una instancia de Session');
+            throw new \Exception ('Primero debe generar una instancia de Session');
         }
 
         return self::$instancia;
+    }
+
+    /**
+     * Retorna la ruta al directorio donde está el controlador rest
+     *
+     * @return string ruta al directorio de controladores
+     */
+    public static function get_path_controlador()
+    {
+        return dirname(__FILE__). '/rest';
     }
 
     public function __construct()
@@ -42,6 +54,11 @@ class Session
         $this->autenticador = $autenticador;
     }
 
+    /**
+     * Permite setear los datos que se incluirán en el token a generarse luego
+     *
+     * @param array $datos los datos a mandar en el token
+     */
     public function setDatos($datos)
     {
         $this->encoder->setToken($datos);
@@ -56,6 +73,8 @@ class Session
      */
     public function autenticar()
     {
+        //TODO: aca hay que llamar a $this->autenticador...
+
         $this->jwt->setEncoder($this->encoder);
 
         $token = $this->jwt->encode();
