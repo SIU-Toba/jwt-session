@@ -51,7 +51,7 @@ class recurso_session implements SIUToba\rest\lib\modelable{
     {
         $session = SIU\JWT\Session::app();
 
-        $session->setDatos($datos);
+        $session->setDatosToken($datos['usuario']);
 
         $token = $session->autenticar();
 
