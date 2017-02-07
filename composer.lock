@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ff13670c8792c2de8edfd584fe66449e",
-    "content-hash": "c239a0c2aef9b2d5111cdc2c90167396",
+    "hash": "b7a962ac97d4247c60ccc51a86232fb0",
+    "content-hash": "0e2ef46a5e8d3c9d6a478b7446eec123",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -160,22 +160,22 @@
         },
         {
             "name": "siu-toba/rest",
-            "version": "dev-jwt",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SIU-Toba/rest.git",
-                "reference": "149e3a70784d7e0e2ad5009ecb03579adc70aebb"
+                "reference": "77f4863037fe432b064984b342e1da64e0f3ae2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SIU-Toba/rest/zipball/149e3a70784d7e0e2ad5009ecb03579adc70aebb",
-                "reference": "149e3a70784d7e0e2ad5009ecb03579adc70aebb",
+                "url": "https://api.github.com/repos/SIU-Toba/rest/zipball/77f4863037fe432b064984b342e1da64e0f3ae2f",
+                "reference": "77f4863037fe432b064984b342e1da64e0f3ae2f",
                 "shasum": ""
             },
             "require": {
                 "doctrine/cache": "~1.4",
                 "php": ">=5.5.0",
-                "siu-toba/jwt-util": "1.0.1",
+                "siu-toba/jwt-util": "~1.0.0",
                 "siu-toba/ssl-cert-utils": "1.0"
             },
             "type": "library",
@@ -190,7 +190,7 @@
             ],
             "description": "Libreria para servicios REST",
             "homepage": "http://toba.siu.edu.ar",
-            "time": "2017-01-09 20:20:53"
+            "time": "2017-02-03 21:26:50"
         },
         {
             "name": "siu-toba/ssl-cert-utils",

@@ -12,7 +12,7 @@
 
     "require": {
         "php": ">=5.6.0",
-        "siu-toba/rest": "dev-jwt",
+        "siu-toba/rest": "@dev",
         "siu-toba/jwt-util": "~1.0.0"
     },
 

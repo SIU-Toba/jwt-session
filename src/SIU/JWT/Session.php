@@ -69,7 +69,7 @@ class Session
         $this->jwt = new Util();
     }
 
-    private function configurarEncoder($data)
+    private function configurarEncoder()
     {
         $tipo = $this->settings['tipo'];
         $algoritmo = $this->settings['algoritmo'];
@@ -86,7 +86,7 @@ class Session
         $this->encoder = $encoder;
     }
 
-    public function setAutenticador(callable $callback)
+    public function setCallbackAutenticador(callable $callback)
     {
         $this->autenticador = $autenticador;
     }
