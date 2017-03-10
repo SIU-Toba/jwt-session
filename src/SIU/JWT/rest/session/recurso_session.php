@@ -30,7 +30,7 @@ class recurso_session implements SIUToba\rest\lib\modelable{
         $token = $this->autenticar($datos);
 
 		if($token === -1 || $token === false){
-			return rest::response()->error_negocio('El usuario y/o clave es incorrecto', 500);
+			return rest::response()->error_negocio(['El usuario y/o clave es incorrecto'], 500);
 		}
 
         rest::response()->post(array($token));
