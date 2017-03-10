@@ -106,10 +106,28 @@ class Session
     /**
      * Permite setear los datos que se incluirán en el token a generarse luego
      *
-     * @param string $usuario     dato de usuario colocar en el token
+     * @param string $usuario     dato de usuario a colocar en el token
      * @param string $descripcion opcional, dato descriptivo a colocar en el token
      */
     public function setDatosToken($usuario, $descripcion = null)
+    {
+        $datos[$this->settings['usuario_id']] = $usuario;
+
+        if (isset($descripcion)){
+            $datos['desc'] = $descripcion;
+        }
+
+
+        $this->buildDatosToken($datos['usuario']);
+    }
+
+    /**
+     * Genera los datos que se incluiran en el token
+     *
+     * @param string $usuario     dato de usuario colocar en el token
+     * @param string $descripcion opcional, dato descriptivo a colocar en el token
+     */
+    protected function buildDatosToken($usuario, $descripcion = null)
     {
         $datos[$this->settings['usuario_id']] = $usuario;
 
@@ -121,20 +139,44 @@ class Session
     }
 
     /**
-     * Genera el token según el encoder utilizado.
+     * Genera el token segun el encoder utilizado.
      *
      * @return string el token codificado
      *
-     * @throws \Exception si no se seteó un encoder
+     * @throws \Exception si no se setea un encoder
      */
     public function autenticar()
     {
-        //TODO: aca hay que llamar a $this->autenticador...
+        $auth = $this->doAutenticacion();
+
+        // solo si no pudo validar
+        if ($auth !== 1){
+            return $auth;
+        }
 
         $this->jwt->setEncoder($this->encoder);
 
         $token = $this->jwt->encode();
 
         return $token;
+    }
+
+    protected function doAutenticacion()
+    {
+        $objeto = $this->autenticador[0];
+        $metodo = $this->autenticador[1];
+
+
+        if (!method_exists($objeto, $metodo)) {
+            return false;
+        }
+
+        try {
+            // call_user_func..
+            $result = $objeto->$metodo($this->datos['usuario'], $this->datos['clave']);
+        } catch (\Exception $exc) {
+        }
+
+        return $result ? 1 : -1;
     }
 }
