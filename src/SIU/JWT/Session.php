@@ -86,9 +86,14 @@ class Session
         $this->encoder = $encoder;
     }
 
-    public function setCallbackAutenticador(callable $callback)
+    /**
+     * Setea un callback compatible con la interfaz toba_autenticable
+     *
+     * @param type $callback
+     */
+    public function setCallbackAutenticador($callback)
     {
-        $this->autenticador = $autenticador;
+        $this->autenticador = $callback;
     }
 
     /**
@@ -117,37 +122,21 @@ class Session
             $datos['desc'] = $descripcion;
         }
 
-
-        $this->buildDatosToken($datos['usuario']);
-    }
-
-    /**
-     * Genera los datos que se incluiran en el token
-     *
-     * @param string $usuario     dato de usuario colocar en el token
-     * @param string $descripcion opcional, dato descriptivo a colocar en el token
-     */
-    protected function buildDatosToken($usuario, $descripcion = null)
-    {
-        $datos[$this->settings['usuario_id']] = $usuario;
-
-        if (isset($descripcion)){
-            $datos['desc'] = $descripcion;
-        }
-
         $this->encoder->setToken($datos);
     }
 
     /**
      * Genera el token segun el encoder utilizado.
      *
+     * @param  string el usuario que se autentica
+     * @param  string la clave del usuario
      * @return string el token codificado
      *
      * @throws \Exception si no se setea un encoder
      */
-    public function autenticar()
+    public function autenticar($usuario, $clave)
     {
-        $auth = $this->doAutenticacion();
+        $auth = $this->doAutenticacion($usuario, $clave);
 
         // solo si no pudo validar
         if ($auth !== 1){
@@ -161,22 +150,22 @@ class Session
         return $token;
     }
 
-    protected function doAutenticacion()
+    protected function doAutenticacion($usuario, $clave)
     {
         $objeto = $this->autenticador[0];
         $metodo = $this->autenticador[1];
-
 
         if (!method_exists($objeto, $metodo)) {
             return false;
         }
 
         try {
-            // call_user_func..
-            $result = $objeto->$metodo($this->datos['usuario'], $this->datos['clave']);
+            $parametros = [$usuario, $clave];
+            $result = call_user_func_array(array($objeto, $metodo), $parametros);
         } catch (\Exception $exc) {
+            //TODO: al logger
         }
-
+        
         return $result ? 1 : -1;
     }
 }

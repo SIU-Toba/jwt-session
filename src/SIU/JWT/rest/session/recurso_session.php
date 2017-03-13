@@ -51,7 +51,7 @@ class recurso_session implements SIUToba\rest\lib\modelable{
 
         $session->setDatosToken($datos['usuario']);
 
-        $token = $session->autenticar();
+        $token = $session->autenticar($datos['usuario'], $datos['clave']);
 
         return $token;
     }
