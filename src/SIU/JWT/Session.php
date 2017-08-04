@@ -67,6 +67,8 @@ class Session
     public function __construct()
     {
         $this->jwt = new Util();
+
+        $this->settings = array();
     }
 
     private function configurarEncoder()
@@ -80,7 +82,7 @@ class Session
         } elseif ($tipo == 'asimetrico') {
             $encoder = new AsimetricEncoder($algoritmo, $key, null);
         } else {
-            throw new Exception('Se debe configurar un decoder (simetrico|asimetrico) para jwt.');
+            throw new \Exception('Se debe configurar un decoder (simetrico|asimetrico) para jwt.');
         }
 
         $this->encoder = $encoder;
@@ -99,11 +101,41 @@ class Session
     /**
      * Permite configurar el encoder JWT para luego generar el token
      *
+     * Las opciones disponibles son:
+     *  - tipo
+     *  - algoritmo
+     *  - usuario_id
+     *  - key_encoder
+     *
+     * Además, se soportan las opciones de JWT (vía firebase/php-jwt):
+     *  - iss
+     *  - exp
+     *  - nbf
+     *  - iat
+     *
+     * Nota: Se puede llamar a este método en cualquier momento (desde el contexto de
+     *       ejecución de la aplicación o desde un recurso rest) con la finalidad de
+     *       agregar o modificar algún atributo. No es necesario proporcionar todos
+     *       los atributos en simultáneo.
+     *
      * @param array $settings la configuración del encoder JWT
      */
     public function setConfigJWT($settings)
     {
-        $this->settings = array_merge(static::getDefaultSettings(), $settings);
+        $this->settings = array_merge(static::getDefaultSettings(), $this->settings, $settings);
+
+        // validar el tiempo de expiración
+        if (!empty($this->settings['exp'])) {
+            $exp = strtotime($this->settings['exp']);
+            if (!$exp) {
+               throw new \Exception('Confguracion incorrecta para la expiracion del token jwt.');
+            }
+            if ($exp <= time()){
+                throw new \Exception('Confguracion incorrecta para la expiracion del token jwt. Es menor que la marca de tiempo actual.');
+            }
+
+            $this->settings['exp'] = $exp;
+        }
 
         $this->configurarEncoder();
     }
@@ -117,6 +149,17 @@ class Session
     public function setDatosToken($usuario, $descripcion = null)
     {
         $datos[$this->settings['usuario_id']] = $usuario;
+
+        $datos['iat'] = time();
+        // Si se setea la expiracion del token
+        if (!empty($this->settings['iat'])) {
+            $datos['iat'] = $this->settings['iat'];
+        }
+
+        // Si se setea la expiracion del token
+        if (!empty($this->settings['exp'])) {
+            $datos['exp'] = $this->settings['exp'];
+        }
 
         if (isset($descripcion)){
             $datos['desc'] = $descripcion;
@@ -165,7 +208,7 @@ class Session
         } catch (\Exception $exc) {
             //TODO: al logger
         }
-        
+
         return $result ? 1 : -1;
     }
 }
