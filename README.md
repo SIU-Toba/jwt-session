@@ -21,8 +21,8 @@ Además, en un proyecto standalone, instalar y configurar [siu-toba/rest](https:
 Para un proyecto hecho con el framework SIU-Toba, agregar en la clase `php/extension_toba/<proyecto>_contexto_ejecucion.php` el siguiente método:
 
 ```  php
-	function conf__rest(SIUToba\rest\rest $rest)
-	{
+function conf__rest(SIUToba\rest\rest $rest)
+{
         // obtener el toba_modelo_proyecto
         $catalogo = toba_modelo_catalogo::instanciacion();
         $id_instancia = toba::instancia()->get_id();
@@ -37,6 +37,7 @@ Para un proyecto hecho con el framework SIU-Toba, agregar en la clase `php/exten
             'algoritmo' => $ini->get('jwt', 'algoritmo', null, true),
             'usuario_id' => $ini->get('jwt', 'usuario_id', null, true),
             'key_encoder' => $ini->get('jwt', 'key_encoder', null, true)
+            'exp' => $ini->get('jwt', 'expiracion', null, true)
         ];
 
         // obtener una instancia del generador de sesiones JWT
@@ -50,7 +51,7 @@ Para un proyecto hecho con el framework SIU-Toba, agregar en la clase `php/exten
 
         // decir a toba donde encontrar el recurso REST /session de la librería
         $rest->add_path_controlador(SIU\JWT\Session::getPathControlador());
-	}
+}
 ```
 
 Una vez configurada la librería en el contexto de ejecución, resta configurar los 
@@ -64,11 +65,25 @@ algoritmo=HS512
 usuario_id=uid
 key_encoder=test
 key_decoder=test
+expiracion=+1 Day
 ```
+Valores posibles para los atributos
+* `tipo` indica si se desea aplicar una encriptación simétrica o no. Posibles valores: `simetrico`, `asimetrico`.
+* `algoritmo` indica el algoritmo de encriptación utilizado. Para mayor detalle de
+configuración sobre algoritmos de encriptación soportados, ver opciones disponibles 
+en [siu-toba/jwt-util](https://github.com/SIU-Toba/jwt-util).
+* `usuario_id` especifica como se llamará el campo en el cual se guarda el usuario, para recuperar luego.
+* `key_encoder` especifica la clave para encriptación del token. Si el tipo es
+`asimetrico`, se trata de la ruta a una clave privada.
+* `key_decoder` especifica la clave para desencriptación del token. Si el tipo es
+`asimetrico`, se trata de la ruta a una clave pública.
+* `expiracion` define en cuanto tiempo expira el token generado. El formato es el 
+que soporta la función [strtotime](http://php.net/manual/en/datetime.formats.php) de PHP.
 
-Para mayor detalle de configuración, ver opciones disponibles en [siu-toba/jwt-util](https://github.com/SIU-Toba/jwt-util).
+Se pueden adicionar atributos extra en el método `setConfigJWT`, de acuerdo a lo que 
+esté soportado en conjunto con la librería [siu-toba/jwt-util](https://github.com/SIU-Toba/jwt-util).
 
-## Utilizar
+## Como utilizar
 
 Una vez integrada y configurado los parámetros, para generar tokens JWT es necesario
 consumir el recurso REST que estará disponible en http://url-aplicacion/rest/session 
