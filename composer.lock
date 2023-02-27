@@ -1,43 +1,46 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "hash": "b7a962ac97d4247c60ccc51a86232fb0",
-    "content-hash": "0e2ef46a5e8d3c9d6a478b7446eec123",
+    "content-hash": "e05c50b3d3b1dd95e29f647460fbe79a",
     "packages": [
         {
             "name": "doctrine/cache",
-            "version": "v1.6.1",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/cache.git",
-                "reference": "b6f544a20f4807e81f7044d31e679ccbb1866dc3"
+                "reference": "56cd022adb5514472cb144c087393c1821911d09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/cache/zipball/b6f544a20f4807e81f7044d31e679ccbb1866dc3",
-                "reference": "b6f544a20f4807e81f7044d31e679ccbb1866dc3",
+                "url": "https://api.github.com/repos/doctrine/cache/zipball/56cd022adb5514472cb144c087393c1821911d09",
+                "reference": "56cd022adb5514472cb144c087393c1821911d09",
                 "shasum": ""
             },
             "require": {
-                "php": "~5.5|~7.0"
+                "php": "~7.1 || ^8.0"
             },
             "conflict": {
                 "doctrine/common": ">2.2,<2.4"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.8|~5.0",
+                "alcaeus/mongo-php-adapter": "^1.1",
+                "cache/integration-tests": "dev-master",
+                "doctrine/coding-standard": "^9",
+                "mongodb/mongodb": "^1.1",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
                 "predis/predis": "~1.0",
-                "satooshi/php-coveralls": "~0.6"
+                "psr/cache": "^1.0 || ^2.0 || ^3.0",
+                "symfony/cache": "^4.4 || ^5.4 || ^6",
+                "symfony/var-exporter": "^4.4 || ^5.4 || ^6"
+            },
+            "suggest": {
+                "alcaeus/mongo-php-adapter": "Required to use legacy MongoDB driver"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.6.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Doctrine\\Common\\Cache\\": "lib/Doctrine/Common/Cache"
@@ -49,16 +52,16 @@
             ],
             "authors": [
                 {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
                     "name": "Roman Borschel",
                     "email": "roman@code-factory.org"
                 },
                 {
                     "name": "Benjamin Eberlei",
                     "email": "kontakt@beberlei.de"
-                },
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
                 },
                 {
                     "name": "Jonathan Wage",
@@ -69,30 +72,67 @@
                     "email": "schmittjoh@gmail.com"
                 }
             ],
-            "description": "Caching library offering an object-oriented API for many cache backends",
-            "homepage": "http://www.doctrine-project.org",
+            "description": "PHP Doctrine Cache library is a popular cache implementation that supports many different drivers such as redis, memcache, apc, mongodb and others.",
+            "homepage": "https://www.doctrine-project.org/projects/cache.html",
             "keywords": [
+                "abstraction",
+                "apcu",
                 "cache",
-                "caching"
+                "caching",
+                "couchdb",
+                "memcached",
+                "php",
+                "redis",
+                "xcache"
             ],
-            "time": "2016-10-29 11:16:17"
+            "support": {
+                "issues": "https://github.com/doctrine/cache/issues",
+                "source": "https://github.com/doctrine/cache/tree/1.13.0"
+            },
+            "funding": [
+                {
+                    "url": "https://www.doctrine-project.org/sponsorship.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/phpdoctrine",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Fcache",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-05-20T20:06:54+00:00"
         },
         {
             "name": "firebase/php-jwt",
-            "version": "v4.0.0",
+            "version": "v6.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/firebase/php-jwt.git",
-                "reference": "dccf163dc8ed7ed6a00afc06c51ee5186a428d35"
+                "reference": "4dd1e007f22a927ac77da5a3fbb067b42d3bc224"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/dccf163dc8ed7ed6a00afc06c51ee5186a428d35",
-                "reference": "dccf163dc8ed7ed6a00afc06c51ee5186a428d35",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/4dd1e007f22a927ac77da5a3fbb067b42d3bc224",
+                "reference": "4dd1e007f22a927ac77da5a3fbb067b42d3bc224",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": "^7.1||^8.0"
+            },
+            "require-dev": {
+                "guzzlehttp/guzzle": "^6.5||^7.4",
+                "phpspec/prophecy-phpunit": "^1.1",
+                "phpunit/phpunit": "^7.5||^9.5",
+                "psr/cache": "^1.0||^2.0",
+                "psr/http-client": "^1.0",
+                "psr/http-factory": "^1.0"
+            },
+            "suggest": {
+                "ext-sodium": "Support EdDSA (Ed25519) signatures",
+                "paragonie/sodium_compat": "Support EdDSA (Ed25519) signatures when libsodium is not present"
             },
             "type": "library",
             "autoload": {
@@ -118,25 +158,36 @@
             ],
             "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
             "homepage": "https://github.com/firebase/php-jwt",
-            "time": "2016-07-18 04:51:16"
+            "keywords": [
+                "jwt",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/firebase/php-jwt/issues",
+                "source": "https://github.com/firebase/php-jwt/tree/v6.4.0"
+            },
+            "time": "2023-02-09T21:01:23+00:00"
         },
         {
             "name": "siu-toba/jwt-util",
-            "version": "v1.0.1",
+            "version": "dev-feature/upgradeJWT",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SIU-Toba/jwt-util.git",
-                "reference": "f08725656de7d6b82f3de3615f09f0ce47680b8f"
+                "reference": "7959b8b966540d099c2081248aa231971a8d7ec5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SIU-Toba/jwt-util/zipball/f08725656de7d6b82f3de3615f09f0ce47680b8f",
-                "reference": "f08725656de7d6b82f3de3615f09f0ce47680b8f",
+                "url": "https://api.github.com/repos/SIU-Toba/jwt-util/zipball/7959b8b966540d099c2081248aa231971a8d7ec5",
+                "reference": "7959b8b966540d099c2081248aa231971a8d7ec5",
                 "shasum": ""
             },
             "require": {
-                "firebase/php-jwt": "^4.0",
+                "firebase/php-jwt": "~6.4",
                 "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "9.5.*"
             },
             "type": "library",
             "autoload": {
@@ -145,9 +196,6 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "SIU"
-            ],
             "authors": [
                 {
                     "name": "Sistema de Información Universitaria - SIU",
@@ -156,26 +204,29 @@
             ],
             "description": "Una pequeña librería que autentica con Web Tokens JSON (JWT)",
             "homepage": "http://www.siu.edu.ar",
-            "time": "2017-01-09 19:54:14"
+            "support": {
+                "issues": "https://github.com/SIU-Toba/jwt-util/issues",
+                "source": "https://github.com/SIU-Toba/jwt-util/tree/feature/upgradeJWT"
+            },
+            "time": "2023-02-27T21:20:17+00:00"
         },
         {
             "name": "siu-toba/rest",
-            "version": "dev-master",
+            "version": "v1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SIU-Toba/rest.git",
-                "reference": "77f4863037fe432b064984b342e1da64e0f3ae2f"
+                "reference": "8a734183fc987f87d3103ae7eee2f2ed07be475b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SIU-Toba/rest/zipball/77f4863037fe432b064984b342e1da64e0f3ae2f",
-                "reference": "77f4863037fe432b064984b342e1da64e0f3ae2f",
+                "url": "https://api.github.com/repos/SIU-Toba/rest/zipball/8a734183fc987f87d3103ae7eee2f2ed07be475b",
+                "reference": "8a734183fc987f87d3103ae7eee2f2ed07be475b",
                 "shasum": ""
             },
             "require": {
                 "doctrine/cache": "~1.4",
-                "php": ">=5.5.0",
-                "siu-toba/jwt-util": "~1.0.0",
+                "php": ">=5.3.0",
                 "siu-toba/ssl-cert-utils": "1.0"
             },
             "type": "library",
@@ -190,7 +241,11 @@
             ],
             "description": "Libreria para servicios REST",
             "homepage": "http://toba.siu.edu.ar",
-            "time": "2017-02-03 21:26:50"
+            "support": {
+                "issues": "https://github.com/SIU-Toba/rest/issues",
+                "source": "https://github.com/SIU-Toba/rest/tree/v1.1.5"
+            },
+            "time": "2016-04-12T18:18:14+00:00"
         },
         {
             "name": "siu-toba/ssl-cert-utils",
@@ -224,19 +279,24 @@
                 }
             ],
             "description": "Utilidades para manipular y sacar información de certificados SSL",
-            "time": "2016-04-12 18:08:51"
+            "support": {
+                "issues": "https://github.com/SIU-Toba/ssl-cert-utils/issues",
+                "source": "https://github.com/SIU-Toba/ssl-cert-utils/tree/v1.0"
+            },
+            "time": "2016-04-12T18:08:51+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "siu-toba/rest": 20
+        "siu-toba/jwt-util": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": ">=5.6.0"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
 }
