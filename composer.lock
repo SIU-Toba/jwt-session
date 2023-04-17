@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e05c50b3d3b1dd95e29f647460fbe79a",
+    "content-hash": "b13963f2bc5c32c446e08ea2802aad54",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -170,16 +170,16 @@
         },
         {
             "name": "siu-toba/jwt-util",
-            "version": "dev-feature/upgradeJWT",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SIU-Toba/jwt-util.git",
-                "reference": "7959b8b966540d099c2081248aa231971a8d7ec5"
+                "reference": "a9fcbbd9aeb5b5c7b01dbc7e79c5131bd6ed1a65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SIU-Toba/jwt-util/zipball/7959b8b966540d099c2081248aa231971a8d7ec5",
-                "reference": "7959b8b966540d099c2081248aa231971a8d7ec5",
+                "url": "https://api.github.com/repos/SIU-Toba/jwt-util/zipball/a9fcbbd9aeb5b5c7b01dbc7e79c5131bd6ed1a65",
+                "reference": "a9fcbbd9aeb5b5c7b01dbc7e79c5131bd6ed1a65",
                 "shasum": ""
             },
             "require": {
@@ -206,9 +206,9 @@
             "homepage": "http://www.siu.edu.ar",
             "support": {
                 "issues": "https://github.com/SIU-Toba/jwt-util/issues",
-                "source": "https://github.com/SIU-Toba/jwt-util/tree/feature/upgradeJWT"
+                "source": "https://github.com/SIU-Toba/jwt-util/tree/v1.0.4"
             },
-            "time": "2023-02-27T21:20:17+00:00"
+            "time": "2023-04-17T19:42:26+00:00"
         },
         {
             "name": "siu-toba/rest",
@@ -289,9 +289,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "siu-toba/jwt-util": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
