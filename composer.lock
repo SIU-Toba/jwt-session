@@ -170,21 +170,21 @@
         },
         {
             "name": "siu-toba/jwt-util",
-            "version": "v1.0.4",
+            "version": "v1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SIU-Toba/jwt-util.git",
-                "reference": "a9fcbbd9aeb5b5c7b01dbc7e79c5131bd6ed1a65"
+                "reference": "15f7387de95505551047bd1a5945db1ea2c337b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SIU-Toba/jwt-util/zipball/a9fcbbd9aeb5b5c7b01dbc7e79c5131bd6ed1a65",
-                "reference": "a9fcbbd9aeb5b5c7b01dbc7e79c5131bd6ed1a65",
+                "url": "https://api.github.com/repos/SIU-Toba/jwt-util/zipball/15f7387de95505551047bd1a5945db1ea2c337b0",
+                "reference": "15f7387de95505551047bd1a5945db1ea2c337b0",
                 "shasum": ""
             },
             "require": {
                 "firebase/php-jwt": "~6.4",
-                "php": ">=5.6.0"
+                "php": ">=7.1.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "9.5.*"
@@ -206,9 +206,9 @@
             "homepage": "http://www.siu.edu.ar",
             "support": {
                 "issues": "https://github.com/SIU-Toba/jwt-util/issues",
-                "source": "https://github.com/SIU-Toba/jwt-util/tree/v1.0.4"
+                "source": "https://github.com/SIU-Toba/jwt-util/tree/v1.0.5"
             },
-            "time": "2023-04-17T19:42:26+00:00"
+            "time": "2023-04-17T20:28:44+00:00"
         },
         {
             "name": "siu-toba/rest",
