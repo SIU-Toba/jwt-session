@@ -10,7 +10,7 @@
     ],
 
     "require": {
-        "php": ">=5.6.0",
+        "php": ">=7.1.0",
         "siu-toba/rest": "~1.1|~2.0|~3.0",
         "siu-toba/jwt-util": "~1.0.0"
     },
