@@ -10,9 +10,9 @@
     ],
 
     "require": {
-        "php": ">=7.1.0",
+        "php": ">=8.1.0",
         "siu-toba/rest": "~1.1|~2.0|~3.0",
-        "siu-toba/jwt-util": "~1.0.0"
+        "siu-toba/jwt-util": "~2.0"
     },
 
     "autoload": {
